@@ -1,130 +1,89 @@
-# 0x04. TypeScript
+# 0x02. Minimum Operations
 
-## Project Overview
+For this project, you will need to understand several key algorithmic and mathematical concepts to devise a solution that efficiently calculates the minimum number of operations to achieve a given number of characters using only “Copy All” and “Paste” operations. Here is a list of concepts and resources that will be helpful:
+Concepts Needed:
 
-This project aims to provide a foundational understanding of TypeScript by exploring various concepts such as interfaces, classes, functions, and more. By the end of this project, you'll be equipped to work with TypeScript effectively and leverage its type-checking capabilities in JavaScript applications.
+```
+    Dynamic Programming:
+        Familiarity with dynamic programming can help in breaking down the problem into simpler subproblems and building up the solution.
+        Dynamic Programming (GeeksforGeeks)
 
-## Learning Objectives
+    Prime Factorization:
+        Understanding how to perform prime factorization is crucial since the problem can be reduced to finding the sum of the prime factors of the target number n.
+        Prime Factorization (Khan Academy)
 
-By the end of this project, you should be able to:
+    Code Optimization:
+        Knowing how to approach problems from an optimization perspective can be useful in finding the most efficient solution.
+        How to optimize Python code
 
-- Understand and utilize basic types in TypeScript.
-- Define and implement interfaces and classes.
-- Work with the DOM using TypeScript.
-- Utilize generic types.
-- Implement and use namespaces.
-- Merge declarations.
-- Use ambient namespaces to import external libraries.
-- Apply basic nominal typing with TypeScript.
+    Greedy Algorithms:
+        The problem can also be approached with greedy algorithms, choosing the best option at each step.
+        Greedy Algorithms (GeeksforGeeks)
 
-## Project Requirements
+    Basic Python Programming:
+        Proficiency in Python, including loops, conditionals, and functions, is necessary to implement the solution.
+        Python Functions (Python Official Documentation)
+```
 
-- **Editors**: vi, vim, emacs, Visual Studio Code.
-- **Platform**: Ubuntu 18.04.
-- **Testing**: Use Jest (version 24.9.*).
-- **File Extensions**: Use `.ts` where applicable.
-- **Code Quality**: The TypeScript compiler should not produce any warnings or errors.
-- **Mandatory File**: A `README.md` file at the root of the project folder.
+By studying these concepts and utilizing the resources provided, you will be equipped to tackle the “Minimum Operations” problem effectively, applying both mathematical reasoning and programming skills to find the most efficient solution.
+Additional Resources
 
-## Configuration Files
+## Mock Technical Interview
 
-The following configuration files are provided and must be used for all tasks:
+### Requirements
+#### General
 
-- `package.json`
-- `.eslintrc.js`
-- `tsconfig.json`
-- `webpack.config.js`
+    Allowed editors: vi, vim, emacs
+    All your files will be interpreted/compiled on Ubuntu 20.04 LTS using python3 (version 3.4.3)
+    All your files should end with a new line
+    The first line of all your files should be exactly #!/usr/bin/python3
+    A README.md file, at the root of the folder of the project, is mandatory
+    Your code should be documented
+    Your code should use the PEP 8 style (version 1.7.x)
+    All your files must be executable
 
-## Tasks
+#### Tasks
+0. Minimum Operations
 
-### Task 0: Creating an Interface for a Student
+In a text file, there is a single character H. Your text editor can execute only two operations in this file: Copy All and Paste. Given a number n, write a method that calculates the fewest number of operations needed to result in exactly n H characters in the file.
 
-- **Directory**: `task_0`
-- **Files**: `task_0/js/main.ts`, `task_0/package.json`, `task_0/.eslintrc.js`, `task_0/tsconfig.json`, `task_0/webpack.config.js`
-- **Objective**: Create a `Student` interface with `firstName`, `lastName`, `age`, and `location` fields. Render a table using Vanilla JavaScript that lists each student's `firstName` and `location`.
+    Prototype: def minOperations(n)
+    Returns an integer
+    If n is impossible to achieve, return 0
 
-### Task 1: Let's Build a Teacher Interface
+Example:
 
-- **Directory**: `task_1`
-- **Files**: `task_1/js/main.ts`, `task_1/webpack.config.js`, `task_1/tsconfig.json`, `task_1/package.json`
-- **Objective**: Create a `Teacher` interface with attributes `firstName`, `lastName`, `fullTimeEmployee`, `yearsOfExperience` (optional), and `location`. Allow dynamic attributes (e.g., `contract`).
+n = 9
 
-### Task 2: Extending the Teacher Interface
+H => Copy All => Paste => HH => Paste =>HHH => Copy All => Paste => HHHHHH => Paste => HHHHHHHHH
 
-- **Directory**: `task_1`
-- **Files**: `task_1/js/main.ts`
-- **Objective**: Create a `Directors` interface that extends `Teacher` and includes a `numberOfReports` attribute.
+Number of operations: 6
 
-### Task 3: Printing Teachers
+carrie@ubuntu:~/0x02-minoperations$ cat 0-main.py
+#!/usr/bin/python3
+"""
+Main file for testing
+"""
 
-- **Directory**: `task_1`
-- **Files**: `task_1/js/main.ts`
-- **Objective**: Write a function `printTeacher` that returns a formatted string with the first letter of the first name and the full last name.
+minOperations = __import__('0-minoperations').minOperations
 
-### Task 4: Writing a Class
+n = 4
+print("Min # of operations to reach {} char: {}".format(n, minOperations(n)))
 
-- **Directory**: `task_1`
-- **Files**: `task_1/js/main.ts`
-- **Objective**: Create a `StudentClass` with `firstName` and `lastName`. Implement methods `workOnHomework` and `displayName`.
+n = 12
+print("Min # of operations to reach {} char: {}".format(n, minOperations(n)))
 
-### Task 5: Advanced Types Part 1
+carrie@ubuntu:~/0x02-minoperations$
 
-- **Directory**: `task_2`
-- **Files**: `task_2/js/main.ts`, `task_2/webpack.config.js`, `task_2/tsconfig.json`, `task_2/package.json`
-- **Objective**: Define `DirectorInterface` and `TeacherInterface` with specific methods. Create corresponding classes and a `createEmployee` function to instantiate either `Director` or `Teacher`.
+carrie@ubuntu:~/0x02-minoperations$ ./0-main.py
+Min number of operations to reach 4 characters: 4
+Min number of operations to reach 12 characters: 7
+carrie@ubuntu:~/0x02-minoperations$
 
-### Task 6: Creating Functions Specific to Employees
+Repo:
 
-- **Directory**: `task_2`
-- **Files**: `task_2/js/main.ts`
-- **Objective**: Implement functions `isDirector` and `executeWork` to differentiate between `Director` and `Teacher` based on provided arguments.
+    GitHub repository: alx-interview
+    Directory: 0x02-minimum_operations
+    File: 0-minoperations.py
 
-### Task 7: String Literal Types
-
-- **Directory**: `task_2`
-- **Files**: `task_2/js/main.ts`
-- **Objective**: Create a string literal type `Subjects` and a function `teachClass` that returns specific strings based on the class name.
-
-### Task 8: Ambient Namespaces
-
-- **Directory**: `task_3`
-- **Files**: `task_3/js/main.ts`, `task_3/js/interface.ts`, `task_3/js/crud.d.ts`
-- **Objective**: Define types and interfaces for a mock CRUD library and use them in `main.ts` to demonstrate database operations.
-
-### Task 9: Namespace & Declaration Merging
-
-- **Directory**: `task_4`
-- **Files**: `task_4/package.json`, `task_4/tsconfig.json`, `task_4/js/subjects/*`
-- **Objective**: Create `Teacher` and `Subject` interfaces and classes using declaration merging within a namespace. Implement specific classes for `Cpp`, `Java`, and `React` with corresponding methods.
-
-### Task 10: Update task_4/js/main.ts
-
-- **Directory**: `task_4`
-- **Files**: `task_4/js/main.ts`
-- **Objective**: Create and export constants for `Cpp`, `Java`, and `React` subjects and a `Teacher` object. Log method outputs for each subject.
-
-### Task 11: Brand Convention & Nominal Typing
-
-- **Directory**: `task_5`
-- **Files**: `task_5/js/main.ts`, `task_5/package.json`, `task_5/webpack.config.js`, `task_5/tsconfig.json`
-- **Objective**: Create interfaces `MajorCredits` and `MinorCredits` with unique brand properties. Implement `sumMajorCredits` and `sumMinorCredits` functions.
-
-## Repository Structure
-
-- **GitHub Repository**: `alx-backend-javascript`
-- **Directories**:
-  - `0x04-TypeScript/task_0`
-  - `0x04-TypeScript/task_1`
-  - `0x04-TypeScript/task_2`
-  - `0x04-TypeScript/task_3`
-  - `0x04-TypeScript/task_4`
-  - `0x04-TypeScript/task_5`
-
-## Notes
-
-- Ensure all TypeScript files compile without errors.
-- Use TypeScript features effectively to enhance code quality and maintainability.
-
----
-
-This README provides a high-level overview of the tasks in the 0x04 TypeScript project. For detailed implementation, refer to the provided task directories and configuration files.
+Copyright © 2024 ALX, All rights reserved.
